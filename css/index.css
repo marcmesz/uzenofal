@@ -116,6 +116,7 @@ main{
     padding: 1em;
     padding-top: 0.2em;
     max-width: 55ch;
+    overflow-wrap: break-word;
 }
 
 .uzenetek{
