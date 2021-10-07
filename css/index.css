@@ -1,0 +1,243 @@
+* { 
+    box-sizing: border-box;
+}
+
+html, body, .chat-head, p{
+    margin:0;
+    padding:0;
+    font-family: "Quicksand", sans-serif;
+}
+
+
+body{
+    font-size: 1em;
+    background-color: #222;
+    color: #ddd;
+    font-weight: normal;
+}
+
+main{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    place-content: end;
+}
+
+.empty{
+    text-align: center;
+    margin: auto;
+}
+
+
+
+input, button{
+    font-family: "Quicksand", sans-serif;
+    font-size: 1em;
+    padding: 0.4em 0.7em;
+    background-color: #555;
+    color: #ddd;
+}
+
+input::placeholder{
+    color: #aaa;
+}
+
+input:focus{
+    outline: none;
+}
+
+input{
+    border: none;
+    border-radius: 1em;
+}
+
+form#uzenoForm{
+    position: relative;
+    display: flex;
+    margin: 0;
+    align-items: center;
+    padding: 0.5em;
+}
+
+button{
+    padding: 0.2em 0.5em;
+    border-radius: 0.3em;
+    border: 0;
+    width: max-content;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#aKuldo{
+    width: 30%;
+    align-self: center;
+    z-index: 0;
+}
+
+#uzenet{
+    width: 100%;
+}
+
+input + input, input + button{
+    margin-left: 0.5em;
+}
+
+
+main{
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.uzenet .chat-head{
+    font-size: 1em;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 0.5em;
+    padding-right: 0.7em;
+}
+
+.uzenet #name-span{
+    font-size: 1em;
+    font-weight: bold;
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 2em;
+    padding: 0.2em 0.8em;
+}
+
+.uzenet #date{
+    color: #a3a3a3;
+    font-size: .65em;
+    letter-spacing: .2em;
+    margin-left: 1em;
+}
+
+.uzenet p {
+    padding: 1em;
+    padding-top: 0.2em;
+    max-width: 55ch;
+}
+
+.uzenetek{
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+}
+
+.uzenet{
+    background-color: #555;
+    border-radius: 1.5em;
+    width: auto;
+    align-self: flex-start;
+    letter-spacing: 0.5px;
+}
+
+.uzenet + .uzenet{
+    margin-top: 0.5em;
+}
+
+.myclass{
+    align-self: flex-end;
+    color: white;
+    background-color: rgb(40, 119, 223);
+}
+
+.myclass #date{
+    color: white;
+}
+
+#submit{
+    background-color: rgb(40, 119, 223);
+    padding: 0.67em 0.8em;
+    border-radius: 50%;
+    margin-right: 0.1em;
+    margin-bottom: 0.1em;
+    margin-left: 0.5em;
+    transition: all 350ms;
+}
+
+#submit:hover{
+    background-color: rgb(13, 77, 161);
+    transform: rotate(270deg);
+}
+
+#refresh{
+    border-radius: 50%;
+    padding: .27em 0.4em;
+    transition: all 350ms;
+}
+
+#refresh:hover{
+    transform: rotate(360deg);
+}
+
+#submit .fa-arrow-right, #refresh .fa-refresh{
+    font-size: 1.5em;
+}
+
+.error #form-error{
+    display: none;
+    position: absolute;
+    bottom: 110px;
+    left: 15px;
+    padding: 0.5em 1em;
+    font-size: 1.3em;
+    font-weight: bold;
+    border-radius: 3em;
+    border: 1px solid red;
+    background-color: rgb(122, 0, 24);
+    transition: all 700ms;
+    z-index: 1000;
+}
+
+.up-and-down #form-error{
+    bottom: 150px;
+}
+
+.error #aKuldo{
+    border: 1px solid red;
+    background-color: rgb(122, 0, 24);
+    transition: all 300ms;
+}
+
+.error #aKuldo::placeholder{
+    color: white;
+}
+
+#hand{
+    position:absolute;
+    transform: rotate(-90deg);
+    left: -20px;
+    bottom: -70px;
+    font-size: 2.5em;
+    z-index: 1;
+}
+
+#hand-holder{
+    z-index: 2 !important;
+}
+
+
+
+@media (max-width: 500px){
+    form#uzenoForm{
+        margin-top:0;
+        background-color: #333;
+        padding:0.5em;
+    }
+    
+    #aKuldo{
+        width: 60%;
+    }
+   
+
+    #submit{
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 290px){
+    .error #form-error{
+        font-size: 1.05em;
+    }
+}
