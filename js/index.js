@@ -19,7 +19,7 @@ azKuldo.addEventListener("keyup",()=>{
 })
 
 
-displayMessagesRefresh()
+setInterval(displayMessagesRefresh,1000)
 
 
 
@@ -182,7 +182,5 @@ function displayMessagesRefresh(){
     .then(res => res.json())
     .then(olvas => {
         renderMessages(olvas)
-        console.log(olvas)
-        console.log("refreshbol")
     })
 }
