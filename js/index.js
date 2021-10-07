@@ -3,6 +3,7 @@ setTimeout(scrollDown,100)
 const azKuldo = document.getElementById("aKuldo")
 const azUzenet = document.getElementById("uzenet")
 const formError = document.getElementById("form-error")
+const messagesDiv = document.getElementById("uzenetek")
 let localUserName = localStorage.getItem("localUserName")
 let upAndDown
 
@@ -18,20 +19,12 @@ azKuldo.addEventListener("keyup",()=>{
 })
 
 
+displayMessagesRefresh()
 
 
-fetch("https://json.extendsclass.com/bin/ae8fe16061b0",{
-Headers: {"Content-Type": "application/x-javascript; charset=utf-8"}})
-.then(res => res.json())
-.then(olvas => {
-    renderMessages(olvas)
-
-})
 
 document.getElementById("uzenoForm").addEventListener("submit",(e)=>{
     e.preventDefault()
-
-    
 
     if(azKuldo.value.length===0 && localUserName===null){
         formError.style.display = "block"
@@ -55,10 +48,11 @@ document.getElementById("uzenoForm").addEventListener("submit",(e)=>{
 
     localUserName=localStorage.getItem("localUserName")
 
-    fetch("https://json.extendsclass.com/bin/ae8fe16061b0",
-    {Headers: {
-        "Content-Type": "application/x-javascript; charset=utf-8"
-    }})
+    fetch("https://json.extendsclass.com/bin/ae8fe16061b0",{
+        method: "GET",
+        credentials: 'same-origin',
+        Headers: {"Content-Type": "application/x-javascript; charset=utf-8"}
+    })
     .then(res => res.json())
     .then(olvas => {
 
@@ -117,12 +111,12 @@ document.getElementById("uzenoForm").addEventListener("submit",(e)=>{
 
 document.getElementById("refresh").addEventListener("click",(e)=>{
     e.preventDefault()
-    location.reload()
+    displayMessagesRefresh()
+    scrollDown()
 })
 
 function renderMessages(data){
     let gyujto = ""
-    let messagesDiv = document.getElementById("uzenetek")
     for(let i = 0; i<data.length; i++){
         gyujto+=`
         <div class="uzenet ${data[i].userName===localUserName ? "myclass" : ""}">
@@ -162,14 +156,7 @@ function hideNameInput(){
 }
 
 function deleteChat(){
-    fetch("https://json.extendsclass.com/bin/ae8fe16061b0",
-    {Headers: {
-        "Content-Type": "application/x-javascript; charset=utf-8"
-    }})
-    .then(res => res.json())
-    .then(olvas => {
-
-    olvas = []
+    let olvas = []
     fetch("https://json.extendsclass.com/bin/ae8fe16061b0", {
         method: 'PUT',
         headers: {
@@ -184,5 +171,18 @@ function deleteChat(){
             console.error('Error:', error);
           })
         renderMessages(olvas)
+}
+
+
+function displayMessagesRefresh(){
+    fetch("https://json.extendsclass.com/bin/ae8fe16061b0",{
+    method: "GET",
+    credentials: 'same-origin',
+    Headers: {"Content-Type": "application/x-javascript; charset=utf-8"}})
+    .then(res => res.json())
+    .then(olvas => {
+        renderMessages(olvas)
+        console.log(olvas)
+        console.log("refreshbol")
     })
 }
