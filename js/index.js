@@ -51,7 +51,8 @@ document.getElementById("uzenoForm").addEventListener("submit",(e)=>{
     fetch("https://json.extendsclass.com/bin/ae8fe16061b0",{
         method: "GET",
         credentials: 'same-origin',
-        Headers: {"Content-Type": "application/x-javascript; charset=utf-8"}
+        Headers: {"Content-Type": "application/x-javascript; charset=utf-8"},
+        cache: "no-store",
     })
     .then(res => res.json())
     .then(olvas => {
@@ -94,6 +95,7 @@ document.getElementById("uzenoForm").addEventListener("submit",(e)=>{
             'Content-Type': 'application/json',
             'Security-key': 'uzenofal123',
             'Private': false},
+        cache: "no-store",
         body: JSON.stringify(olvas)
     })
         .then(res => res.json())
@@ -164,6 +166,7 @@ function deleteChat(){
             'Api-key': '39a549c4-2542-11ec-8e13-0242ac110002',
             'Security-key': 'uzenofal123',
             'Private': false},
+        cache: "no-store",
         body: JSON.stringify(olvas)
     })
         .then(res => res.json())
@@ -178,9 +181,11 @@ function displayMessagesRefresh(){
     fetch("https://json.extendsclass.com/bin/ae8fe16061b0",{
     method: "GET",
     credentials: 'same-origin',
-    Headers: {"Content-Type": "application/x-javascript; charset=utf-8"}})
+    Headers: {"Content-Type": "application/x-javascript; charset=utf-8"},
+    cache: "no-store",})
     .then(res => res.json())
     .then(olvas => {
         renderMessages(olvas)
+        scrollDown()
     })
 }
