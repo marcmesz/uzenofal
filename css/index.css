@@ -210,7 +210,8 @@ main{
     transform: rotate(-90deg);
     left: -20px;
     bottom: -70px;
-    font-size: 2.5em;
+    font-size: 3.5em;
+    font: icon;
     z-index: 1;
 }
 
